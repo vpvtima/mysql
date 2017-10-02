@@ -1,8 +1,10 @@
 # MySQL
 ---
-Запросы к базе данных
+- рапросы к базе данных **Employees**
+- работа с MySQL **Workbench**
 
-
+## EER diagram ##
+![employees DB EER diagram](http://img-fotki.yandex.ru/get/361460/13223519.174/0_b2448_e100c483_orig.png)
 
 ## CRUD ##
 [link](https://www.w3schools.com/sql/)
