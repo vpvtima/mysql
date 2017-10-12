@@ -1,3 +1,17 @@
+-- выбрать управляющих департаментов
+SELECT *
+FROM dept_manager
+  LEFT JOIN departments USING (dept_no)
+  LEFT JOIN employees USING (emp_no)
+LIMIT 20;
+
+-- подсчитать количество мужчин и женщин
+SELECT
+  COUNT(*) AS 'count',
+  gender
+FROM employees
+GROUP BY gender;
+
 -- выбрать сотрудников, чья зарплата меньше 70 000 лимит 20 прямая сортировка по зарплате (employees -> salaries)
 SELECT  *
 FROM employees
