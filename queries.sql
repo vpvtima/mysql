@@ -1,4 +1,37 @@
--- получить все зарплаты сотрудника с номером 10001
+-- выбрать управляющих департаментов
+SELECT *
+FROM dept_manager
+  LEFT JOIN departments USING (dept_no)
+  LEFT JOIN employees USING (emp_no)
+LIMIT 20;
+
+-- подсчитать количество мужчин и женщин
+SELECT
+  COUNT(*) AS 'count',
+  gender
+FROM employees
+GROUP BY gender;
+
+-- выбрать сотрудников, чья зарплата меньше 70 000 лимит 20 прямая сортировка по зарплате (employees -> salaries)
+SELECT  *
+FROM employees
+LEFT JOIN salaries USING (emp_no)
+WHERE salary<70000
+ORDER BY salary ASC
+LIMIT 20;
+
+-- выбрать сотрудников с должностями Engeneer (employees -> titles)
+SELECT *
+FROM employees
+LEFT JOIN titles USING (emp_no)
+WHERE titles.title='Engineer';
+
+-- выбрать сотрудников работающих в отделе (employees -> dept_emp -> departments)
+SELECT *
+FROM employees
+LEFT JOIN dept_emp USING (emp_no)
+LEFT JOIN departments USING (dept_no)
+LIMIT 20;
 
 -- узнать зарплату сотрудника с номером 10001 за 1986 год --
 SELECT
