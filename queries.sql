@@ -1,3 +1,24 @@
+/*
+функция CONCAT - объединить в одно поле fio имя и фамилию сотрудника за номером 10001 (employees) 
+= ссылка на пример = https://www.w3schools.com/sql/trymysql.asp?filename=trysql_func_mysql_concat2
+*/
+
+/*
+функция SUM - сложить все зарплаты сотрудника за номером 10001 (salaries) 
+= ссылка = https://www.w3schools.com/sql/trymysql.asp?filename=trysql_func_mysql_sum
+*/
+
+/*
+LEFT JOIN : CONCAT : SUM - обединить два предыдущих задания в одном запросе (employees - > salaries)
+*/
+
+/*
+функция REPLACE - заменить все буквы 'e' на символ '+' для сотрудника за номером 10001 (employees) 
+= ссылка = https://www.w3schools.com/sql/func_mysql_replace.asp
+*/
+
+-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 -- выбрать управляющих департаментов
 SELECT *
 FROM dept_manager
