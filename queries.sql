@@ -1,5 +1,68 @@
+/*вывести средние зарплаты, округленные и полные сотрудников от 10001 до 10003*/
+SELECT
+  concat(first_name, " ", last_name) AS FIO,
+  avg(salary) as SrednyayaZar,
+  round(avg(salary)) as SrednyayaZar
+FROM salaries
+  LEFT JOIN employees USING (emp_no)
+WHERE emp_no
+BETWEEN '10001' AND '10003'
+GROUP BY FIO;
+
+/*
+вывести среднюю зарплату, полную и округлённую для сотрудника 10004
+*/
+SELECT
+  round(AVG(salary)) AS SrednyayaZarplataRounded,
+  avg(salary) AS SrednyayaZarplata
+FROM salaries
+WHERE emp_no = 10004;
+
+/*
+функция CONCAT - объединить в одно поле fio имя и фамилию сотрудника за номером 10001 (employees) 
+= ссылка на пример = https://www.w3schools.com/sql/trymysql.asp?filename=trysql_func_mysql_concat2
+*/
+SELECT first_name, last_name, concat(first_name, " ", last_name) AS FIO
+FROM employees
+WHERE emp_no=10001;
+
+/*
+функция SUM - сложить все зарплаты сотрудника за номером 10001 (salaries) 
+= ссылка = https://www.w3schools.com/sql/trymysql.asp?filename=trysql_func_mysql_sum
+*/
+SELECT sum(salary) AS TotalSum
+FROM salaries
+WHERE emp_no=10001;
+
+/*
+LEFT JOIN : CONCAT : SUM - обединить два предыдущих задания в одном запросе (employees - > salaries)
+*/
+SELECT
+  first_name,
+  last_name,
+  concat(first_name, " ", last_name, " ") AS fio,
+  sum(salary) AS sum
+FROM employees
+  LEFT JOIN salaries USING (emp_no)
+WHERE emp_no=10001;
+
+/*
+функция REPLACE - заменить все буквы 'e' на символ '+' для сотрудника за номером 10001 (employees) 
+= ссылка = https://www.w3schools.com/sql/func_mysql_replace.asp
+*/
+SELECT
+  first_name,
+  last_name,
+  replace(
+      concat(first_name, " ", last_name),
+      "e", "+") AS Repka
+FROM employees
+WHERE emp_no=10001;
+
+-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 -- выбрать управляющих департаментов
-SELECT *
+SELECT first_name, last_name
 FROM dept_manager
   LEFT JOIN departments USING (dept_no)
   LEFT JOIN employees USING (emp_no)
