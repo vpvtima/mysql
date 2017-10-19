@@ -1,3 +1,32 @@
+/*
+выбрать сотрудников со средней зарплатой менее 50к долларов
+*/
+SELECT emp_no, first_name, last_name,round(avg(salary))
+FROM employees
+LEFT JOIN salaries USING (emp_no)
+GROUP BY emp_no
+HAVING round(avg(salary))<50000;
+
+/*
+подсчитать мужчин в рабочем коллективе
+*/
+SELECT
+  COUNT(*) AS cou, gender
+FROM employees
+GROUP BY gender
+HAVING cou > 170000;
+
+/*
+выбрать сотрудников с суммой зарплат более 1 миллиарда двухсот миллионов долларов
+*/
+SELECT employees.last_name, SUM(salaries.salary) AS summ
+FROM employees
+LEFT JOIN salaries USING (emp_no)
+GROUP BY employees.last_name
+HAVING summ > 120000000
+
+-- ================================================
+
 /*вывести средние зарплаты, округленные и полные сотрудников от 10001 до 10003*/
 SELECT
   concat(first_name, " ", last_name) AS FIO,
