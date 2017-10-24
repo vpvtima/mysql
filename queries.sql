@@ -50,6 +50,7 @@ HAVING Zarplata<45000
 ORDER BY Zarplata ASC
 LIMIT 20;
 
+
 /*
 выбрать сотрудников со средней зарплатой менее 50к долларов
 */
