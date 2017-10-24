@@ -2,22 +2,53 @@
 Посчитать сколько людей в каждой из профессий (employees -> titles)
 отсортировать по количеству
 */
+SELECT
+  title, COUNT(*) AS cou
+FROM employees
+  LEFT JOIN titles USING (emp_no)
+GROUP BY title
+ORDER BY cou ASC ;
 
 /*
 Найти профессии, в которых количествео сотрудников меньше 50 000
 - смотри предыдущий запрос
 */
+SELECT
+  COUNT(*) AS cou, title
+FROM employees
+  LEFT JOIN titles USING (emp_no)
+GROUP BY title
+HAVING cou < 50000;
 
 /*
 Найти средние зарплаты для 20 человек чей emp_no меньше 14000 (employees -> salaries)
 отсортировать по зарплате
 */
+SELECT emp_no, first_name, last_name,round(avg(salary)) AS Sred
+FROM employees
+  LEFT JOIN salaries USING (emp_no)
+GROUP BY first_name
+HAVING round(avg(salary))
+AND emp_no<14000
+ORDER BY Sred ASC
+LIMIT 20;
 
 /*
 Найти людей чьи средние зарплаты меньше 45000 для 20 человек чей emp_no меньше 14000 (employees -> salaries)
 - смотри предыдущий запрос
 */
-
+SELECT
+  emp_no,
+  first_name,
+  last_name,
+  round(avg(salary)) AS Zarplata
+FROM employees
+  LEFT JOIN salaries USING (emp_no)
+  WHERE emp_no<14000
+GROUP BY emp_no
+HAVING Zarplata<45000
+ORDER BY Zarplata ASC
+LIMIT 20;
 
 /*
 выбрать сотрудников со средней зарплатой менее 50к долларов
@@ -44,7 +75,7 @@ SELECT employees.last_name, SUM(salaries.salary) AS summ
 FROM employees
 LEFT JOIN salaries USING (emp_no)
 GROUP BY employees.last_name
-HAVING summ > 120000000
+HAVING summ > 120000000;
 
 -- ================================================
 
